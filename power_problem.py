@@ -63,10 +63,11 @@ ill_list = []
 zip_list = []
 zip_low_list = []
 zip_high_list = []
+city_high_name = []
+city_low_name = []
+city_list = []
 
 file2 = open('free-zipcode-database-Primary.csv', 'r')
-
-city_list = []
 
 reader2 = csv.reader(file2, delimiter = ',')
 ##delimiter separates each piece of data
@@ -88,18 +89,14 @@ lowest = ill_list[0]
 highest = ill_list[len(ill_list)-1]
 
 
-#zipcode for highest and lowest values
+#Zipcode for highest and lowest values
 for i in range(len(rate_list)):
     if rate_list[i][8] == lowest and rate_list[i][3] == 'IL' and rate_list[i][4] == 'Bundled':
         zip_low_list.append(rate_list[i][0])
     if rate_list[i][8] == highest and rate_list[i][3] == 'IL' and rate_list[i][4] == 'Bundled':
         zip_high_list.append(rate_list[i][0])
 
-
-city_high_name = []
-city_low_name = []
-
-
+#City Names
 for i in range(len(city_list)):
     if city_list[i][0] == zip_low_list[0]:
         city_low_name.append(str(city_list[i][2]))
@@ -113,6 +110,7 @@ print('The city with the highest residential rate is: ', city_high_name[0])
 
 #FOR #4  CHOOSE ONE OF THE FOLLOWING TWO PROBLEMS. The first one is easier than the second.
 #4  (Easier) USING ONLY THE ZIP CODE DATA... Make a scatterplot of all the zip codes in Illinois according to their Lat/Long.  Make the marker size vary depending on the population contained in that zip code.  Add an alpha value to the marker so that you can see overlapping markers.
+
 import matplotlib.pyplot as plt
 import numpy as np
 import matplotlib.patches as mpatches
